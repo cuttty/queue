@@ -59,7 +59,7 @@ public:
        }
         return false;
     };
-    ///for tests
+    //for tests
     bool operator== (const Queue& other) const {
         if (last != other.last) {
             return false;
