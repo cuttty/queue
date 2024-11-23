@@ -7,12 +7,12 @@
 
 #include <iostream>
 template <typename T>
-class Stack {
+class Queue {
      std:: vector<T> data;
      int last; // индекс последнего элемента
 public:
 
-    explicit Stack(int n) {
+    explicit Queue(int n) {
         if(n<=0) {
             throw std::out_of_range("Invalid lenght");
         }
@@ -22,21 +22,21 @@ public:
 
     T pop() {
         if (last < 0) {
-            throw std::out_of_range("Empty stack");
+            throw std::out_of_range("Empty queue");
         }
-       data.pop_back();
-        last--;
-        return data[last];
+        T tmp = data[0];
+        for (int i = 1; i < last; i++) {
+            data[i-1] = data [i];
+        }
 
-        /*T tmp = data[last];
-        data.erase(data.begin() + last);
-        last--;*/
-       // return tmp;
+        //delete data[last];
+        last--;
+        return tmp;
     }
 
     void push(T value) {
         if (last == (data.size()-1)) {
-            throw std::out_of_range("Stack overflow");
+            throw std::out_of_range("Queue overflow");
         }
         last++;
         data[last] = value;
@@ -60,7 +60,7 @@ public:
         return false;
     };
     ///for tests
-    bool operator== (const Stack& other) const {
+    bool operator== (const Queue& other) const {
         if (last != other.last) {
             return false;
         }
@@ -72,7 +72,7 @@ public:
         return true;
     }
 
-    bool operator!= (const Stack& other) const {
+    bool operator!= (const Queue& other) const {
         return !(this==other);
     }
 };

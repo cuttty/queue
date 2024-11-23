@@ -2,90 +2,90 @@
 #include "queue.h"
 #include <gtest.h>
 
-TEST(Stack, can_create_non_empty_stack) {
-    ASSERT_NO_THROW(Stack<int> S(7));
+TEST(Queue, can_create_non_empty_queue) {
+    ASSERT_NO_THROW(Queue<int> Q(7));
 }
-TEST(Stack, cant_create_stack_with_negative_length) {
-    ASSERT_ANY_THROW(Stack<int> S(-7));
-}
-
-TEST(Stack, cant_create_stack_with_null_length) {
-    ASSERT_ANY_THROW(Stack<int> S(0));
+TEST(Queue, cant_create_queue_with_negative_length) {
+    ASSERT_ANY_THROW(Queue<int> Q(-7));
 }
 
-TEST(Stack, can_push_and_pop_element) {
-    Stack <int> S(3);
-    S.push(2);
-    S.push(7);
-    S.push(5);
+TEST(Queue, cant_create_stack_with_null_length) {
+    ASSERT_ANY_THROW(Queue<int> Q(0));
+}
 
-    Stack <int> S_exp(2);
-    S_exp.push(2);
-    S_exp.push(7);
+TEST(Queue, can_push_and_pop_element) {
+    Queue <int> Q(3);
+    Q.push(2);
+    Q.push(7);
+    Q.push(5);
 
-    S.pop();
-    ASSERT_EQ(S,S_exp);
+    Queue <int> Q_exp(2);
+    Q_exp.push(7);
+    Q_exp.push(5);
+
+    Q.pop();
+    ASSERT_EQ(Q,Q_exp);
 }
 ///
-TEST(Stack, pop_return_element_before_last_element) {
-    Stack <int> S(3);
-    S.push(2);
-    S.push(7);
-    S.push(5);
+TEST(Queue, pop_return_element) {
+    Queue <int> Q(3);
+    Q.push(2);
+    Q.push(7);
+    Q.push(5);
 
-    ASSERT_EQ(S.pop(), 7);
+    ASSERT_EQ(Q.pop(), 2);
 }
 
-TEST(Stack, cant_pop_in_empty_stack) {
-    Stack <int> S(1);
-    ASSERT_ANY_THROW(S.pop());
+TEST(Queue, cant_pop_in_empty_queue) {
+    Queue <int> Q(1);
+    ASSERT_ANY_THROW(Q.pop());
 }
 
-TEST(Stack, can_pop_only_element) {
-    Stack <int> S(1);
-    S.push(3);
-    ASSERT_NO_THROW(S.pop());
+TEST(Queue, can_pop_only_element) {
+    Queue <int> Q(1);
+    Q.push(3);
+    ASSERT_NO_THROW(Q.pop());
 }
 
-TEST(Stack, cant_push_full_stack) {
-    Stack <int> S(3);
-    S.push(2);
-    S.push(7);
-    S.push(5);
-    ASSERT_ANY_THROW(S.push(8));
+TEST(Queue, cant_push_full_queue) {
+    Queue <int> Q(3);
+    Q.push(2);
+    Q.push(7);
+    Q.push(5);
+    ASSERT_ANY_THROW(Q.push(8));
 }
 
-TEST(Stack, can_get_last_element) {
-    Stack <int> S(3);
-    S.push(2);
-    S.push(7);
-    S.push(5);
-    ASSERT_EQ(S.top(), 5);
+TEST(Queue, can_get_last_element) {
+    Queue <int> Q(3);
+    Q.push(2);
+    Q.push(7);
+    Q.push(5);
+    ASSERT_EQ(Q.top(), 5);
 }
 
-TEST(Stack, cant_get_last_element_in_empty_stack) {
-    Stack <int> S(3);
-    ASSERT_ANY_THROW(S.top());
+TEST(Queue, cant_get_last_element_in_empty_queue) {
+    Queue <int> Q(3);
+    ASSERT_ANY_THROW(Q.top());
 }
 
-TEST(Stack, can_get_size) {
-    Stack <int> S(3);
-    S.push(2);
-    S.push(8);
-    ASSERT_EQ(2, S.size());
+TEST(Queue, can_get_size) {
+    Queue <int> Q(3);
+    Q.push(2);
+    Q.push(8);
+    ASSERT_EQ(2, Q.size());
 }
 
-TEST(Stack, can_get_size_in_empty_stack) {
-    Stack <int> S(3);
-    ASSERT_EQ(0, S.size());
+TEST(Queue, can_get_size_in_empty_queue) {
+    Queue <int> Q(3);
+    ASSERT_EQ(0, Q.size());
 }
 
-TEST(Stack, empty_stack_return_true) {
-    Stack <int> S(3);
-    ASSERT_EQ(S.empty(), true);
+TEST(Queue, empty_queue_return_true) {
+    Queue <int> Q(3);
+    ASSERT_EQ(Q.empty(), true);
 }
-TEST(Stack, non_empty_stack_return_false) {
-    Stack <int> S(3);
-    S.push(6);
-    ASSERT_EQ(S.empty(), false);
+TEST(Queue, non_empty_queue_return_false) {
+    Queue <int> Q(3);
+    Q.push(6);
+    ASSERT_EQ(Q.empty(), false);
 }
