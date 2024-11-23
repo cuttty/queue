@@ -26,7 +26,7 @@ TEST(Queue, can_push_and_pop_element) {
     Q.pop();
     ASSERT_EQ(Q,Q_exp);
 }
-///
+//
 TEST(Queue, pop_return_element) {
     Queue <int> Q(3);
     Q.push(2);
